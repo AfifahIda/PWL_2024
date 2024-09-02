@@ -3,6 +3,7 @@
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
+//PRAKTIKUM 1
 //basic routing
 /*Route::get('/hello', function () {
     return 'Hello World';
@@ -45,7 +46,7 @@ Route::get('/user/{name?}', function ($name='John') {
 });
 
 
-
+//PRAKTIKUM 2
 Route::get('/hello', [WelcomeController::class, 'hello']);
 
 /*Route::get('/', [WelcomeController::class, 'index']);
@@ -54,14 +55,10 @@ Route::get('/articles/{id}', [WelcomeController::class, 'articles']);*/
 
 use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
-
 use App\Http\Controllers\AboutController;
 Route::get('/about', [AboutController::class, 'about']);
-
 use App\Http\Controllers\ArticleController;
 Route::get('/articles/{id}', [ArticleController::class, 'articles']);
-
-
 
 use App\Http\Controllers\PhotoController;
 Route::resource('photos', PhotoController::class);
@@ -72,6 +69,21 @@ Route::resource('photos', PhotoController::class)->only([
 Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
     ]);
+
+
+//PRAKTIKUM 3
+/*Route::get('/greeting', function () {
+    return view('hello', ['name' => 'Afifah']);
+    });
+
+Route::get('/greeting', function () {
+    return view('blog.hello', ['name' => 'Afifah']);
+    });*/
+
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
