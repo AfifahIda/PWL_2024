@@ -83,7 +83,24 @@ Route::get('/greeting', function () {
 Route::get('/greeting', [WelcomeController::class, 'greeting']);
 
 
+//SOAL PRAKTIKUM
+Route::get('/', [HomeController::class, 'posHome']);
 
+Route::get('/product', [HomeController::class, 'posHome']);
+
+use App\Http\Controllers\ProductController;
+Route::prefix('category')->group(function () {
+    Route::get('food-beverage', [ProductController::class, 'foodBeverage']);
+    Route::get('beauty-health', [ProductController::class, 'beautyHealth']);
+    Route::get('home-care', [ProductController::class, 'homeCare']);
+    Route::get('baby-kid', [ProductController::class, 'babyKid']);
+});
+
+use App\Http\Controllers\UserController;
+Route::get('/id/{id}/name/{name}', [UserController::class, 'biodata']);
+
+use App\Http\Controllers\PenjualanController;
+Route::get('/penjualan', [PenjualanController::class, 'total']);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
